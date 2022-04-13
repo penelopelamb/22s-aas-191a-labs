@@ -1,0 +1,36 @@
+body{
+   
+}
+
+header{
+    grid-area: header;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h2{
+    font-size: 30px;
+    text-transform: uppercase;
+    color:rgb(210, 167, 210);   
+}
+
+#footer{
+    grid-area: footer;
+}
+
+.main{
+    grid-area: main_content;
+    grid-template-areas: "content" "main_map";
+    display: grid;
+}
+
+#contents{
+    grid-area: content;
+    
+}
+
+#the_map{
+    height:60vh;
+    width: 60vh;
+    grid-area: main_map;
+    
+}
