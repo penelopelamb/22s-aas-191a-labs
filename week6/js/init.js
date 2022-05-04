@@ -24,29 +24,33 @@ addMarker(34.040489,-118.443588,'Millet Crepe',milletcrepe);
 addMarker(34.062620,-118.448190,'Dip n Mix', dipnmix);
 addMarker(34.055569,-118.441971, 'Saffron and Rose', saffronrose);
 
-createButtons(33.999859, -118.465607,'Venice');
-createButtons(34.039450,-118.442750, 'Sawtelle');
-createButtons(34.062620,-118.448190, 'Westwood');
+//createButtons(33.999859, -118.465607,'Venice');
+//createButtons(34.039450,-118.442750, 'Sawtelle');
+//createButtons(34.062620,-118.448190, 'Westwood');
 
 const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQaqt_cytRgZLP_zz6bDh-Ye25FthzWdYWtAd1fWcqIv9YWrwJxaverrbaGmPUGrNGEblnyDcVvyT39/pub?output=csv" 
-function loadData(url){ 
-    fetch(url)
-        .then(response => {
-            return response
-        })
-        .then(data =>{
-            // do something with the data
-        })
-}
-// we will put this comment to remember to call our function later!
-// loadData(dataUrl) 
 
+function loadData(url){
+    Papa.parse(url, {
+        header: true,
+        download: true,
+        complete: results => processData(results)
+    })
+}
+
+function processData(results){
+    console.log(results)
+    results.data.forEach(data => {
+        console.log(data)
+        addMarker(data.lat,data.lng,data.Name,data['What makes it so good?'])
+    })
+}
 
 
 function addMarker(lat,lng,title,message){
     console.log(message)
     L.marker([lat,lng]).addTo(map).bindPopup(`<h3>${title}</h3> <p>${message}</p>`)
-    //createButtons(lat,lng,title);
+    createButtons(lat,lng,title);
     return message
 }
 

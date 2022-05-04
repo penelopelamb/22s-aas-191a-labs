@@ -29,15 +29,16 @@ createButtons(34.039450,-118.442750, 'Sawtelle');
 createButtons(34.062620,-118.448190, 'Westwood');
 
 const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQaqt_cytRgZLP_zz6bDh-Ye25FthzWdYWtAd1fWcqIv9YWrwJxaverrbaGmPUGrNGEblnyDcVvyT39/pub?output=csv" 
-function loadData(url){ 
-    fetch(url)
-        .then(response => {
-            return response
-        })
-        .then(data =>{
-            // do something with the data
-        })
+function loadData(url){
+    Papa.parse(dataUrl, {
+        header: true,
+        download: true,
+        complete: results => {
+            console.log(results)
+        }
+    })
 }
+
 // we will put this comment to remember to call our function later!
 // loadData(dataUrl) 
 
