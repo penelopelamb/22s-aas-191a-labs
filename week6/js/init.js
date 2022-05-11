@@ -59,7 +59,7 @@ function addSurvey(title){
     const newButton = document.createElement("button"); 
     newButton.id = "button"+title; 
     newButton.innerHTML = title; 
-    newButton.style.background = 'red';
+    newButton.style.background = 'pink';
     newButton.addEventListener('click', function(){
         window.open('https://forms.gle/q2ax7zattjs6Cgm79', '_blank'); 
     })
