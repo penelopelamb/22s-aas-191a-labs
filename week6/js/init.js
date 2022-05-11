@@ -17,12 +17,7 @@ milletcrepe = '<p>Millet Crepe serves their ice cream in a crepe rolled like a c
 dipnmix = '<p>Dip n Mix is the best late-night ice cream option for UCLA students. They are also probably one of the only places I know of that does not charge extra for acai bowl toppings</p>' + '<br /> They do not have a website, but here is their ' + '<a href="https://www.yelp.com/biz/dipnmix-los-angeles-6">Yelp</a>';
 saffronrose = '<p>Saffron and Rose serves delicious, creamy Persian Ice Cream. I always order the Saffron Pistachio and White Rose (which makes me basic because those are their most popular flavors).</p>' + '<br /> Here is their ' + '<a href="https://saffronrosepersianicecream.com/flavors/">menu</a>';
 
-addMarker(33.989052, -118.462440,'Salt n Straw', saltnstraw);
-addMarker(33.999859, -118.465607, 'Wanderlust', wanderlust);
-addMarker(34.039450,-118.442750,'SomiSomi', somisomi);
-addMarker(34.040489,-118.443588,'Millet Crepe',milletcrepe);
-addMarker(34.062620,-118.448190,'Dip n Mix', dipnmix);
-addMarker(34.055569,-118.441971, 'Saffron and Rose', saffronrose);
+
 
 //createButtons(33.999859, -118.465607,'Venice');
 //createButtons(34.039450,-118.442750, 'Sawtelle');
@@ -44,6 +39,12 @@ function processData(results){
         console.log(data)
         addMarker(data.lat,data.lng,data.Name,data['What makes it so good?'])
     })
+    addMarker(33.989052, -118.462440,'Salt n Straw', saltnstraw);
+addMarker(33.999859, -118.465607, 'Wanderlust', wanderlust);
+addMarker(34.039450,-118.442750,'SomiSomi', somisomi);
+addMarker(34.040489,-118.443588,'Millet Crepe',milletcrepe);
+addMarker(34.062620,-118.448190,'Dip n Mix', dipnmix);
+addMarker(34.055569,-118.441971, 'Saffron and Rose', saffronrose);
 }
 
 
@@ -54,6 +55,16 @@ function addMarker(lat,lng,title,message){
     return message
 }
 
+function addSurvey(title){
+    const newButton = document.createElement("button"); 
+    newButton.id = "button"+title; 
+    newButton.innerHTML = title; 
+    newButton.style.background = 'red';
+    newButton.addEventListener('click', function(){
+        window.open('https://forms.gle/q2ax7zattjs6Cgm79', '_blank'); 
+    })
+    document.getElementById("space_for_buttons").appendChild(newButton);
+}
 function createButtons(lat,lng,title){
     const newButton = document.createElement("button"); 
     newButton.id = "button"+title; 
@@ -66,4 +77,6 @@ function createButtons(lat,lng,title){
     document.getElementById("space_for_buttons").appendChild(newButton);
 }
 
+
 loadData(dataUrl)
+addSurvey('Add your own!')

@@ -1,6 +1,4 @@
-body{
-   
-}
+
 
 header{
     grid-area: header;
@@ -13,26 +11,33 @@ h2{
     color:rgb(210, 167, 210);   
 }
 
+
 #footer{
     grid-area: footer;
 }
 
 .main{
     grid-area: main_content;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 30fr;
-    grid-template-areas: "space_for_buttons contents"
-                        "main_map contents";
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "buttonHome" "main_map" ;
     display: grid;
 }
 
+#survey{
+    height:80vh;
+    grid-area: survey;
+}
+
+#space_for_buttons{
+    grid-area: buttonHome;
+}
+
 #contents{
-    grid-area: contents; 
+    grid-area: content;
+    display: grid;
 }
 
 #the_map{
-    height:60vh;
-    width: 80vh;
+    height:80vh;
     grid-area: main_map;
-    
 }
